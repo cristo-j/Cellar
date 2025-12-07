@@ -12,10 +12,9 @@ module.exports = {
     data_aquisicao: { type: 'string', format: 'date' },
     consumida: { type: 'boolean' },
     data_consumo: { type: 'string', format: 'date' },
-    avaliacao: { type: 'number',
-      multipleOf: 0.1,
+    avaliacao: { type: 'integer',
       minimum: 0,
-      maximum: 10
+      maximum: 100
       },
 
   },

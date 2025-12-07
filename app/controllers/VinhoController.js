@@ -53,6 +53,8 @@ class VinhoController {
   create(request, response) {
     let validacoes = validacao(request.body);
     if (!validacoes) {
+      // Aplica a tradução para pt-BR nos erros
+      localize(validacao.errors);
       let mensagem = validacao.errors[0].instancePath.replace('/', '');
       mensagem += ' ' + validacao.errors[0].message;
       return response.status(400).json({
@@ -72,6 +74,13 @@ class VinhoController {
   }
 
   update(request, response) {
+    let validacoes = validacao(request.body);
+    if (!validacoes) {
+      localize(validacao.errors);
+      let mensagem = validacao.errors[0].instancePath.replace('/', '');
+      mensagem += ' ' + validacao.errors[0].message;
+      return response.status(400).json({ message: mensagem });
+    }
     const id = request.params.id;
 
     Vinho.findByPk(id)

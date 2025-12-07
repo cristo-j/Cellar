@@ -25,11 +25,10 @@ class GarrafaController {
   create(request, response) {
     let validacoes = validacao(request.body);
     if (!validacoes) {
+      localize(validacao.errors);
       let mensagem = validacao.errors[0].instancePath.replace('/', '');
       mensagem += ' ' + validacao.errors[0].message;
-      return response.status(400).json({
-        message: mensagem,
-      });
+      return response.status(400).json({ message: mensagem });
     }
 
     const garrafaParaCriar = {
@@ -51,11 +50,10 @@ class GarrafaController {
   update(request, response) {
     let validacoes = validacao(request.body);
     if (!validacoes) {
-        let mensagem = validacao.errors[0].instancePath.replace('/', '');
-        mensagem += ' ' + validacao.errors[0].message;
-        return response.status(400).json({
-        message: mensagem,
-        });
+      localize(validacao.errors);
+      let mensagem = validacao.errors[0].instancePath.replace('/', '');
+      mensagem += ' ' + validacao.errors[0].message;
+      return response.status(400).json({ message: mensagem });
     }
 
     const { id_vinho, id_garrafa } = request.params;

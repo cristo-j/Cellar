@@ -105,7 +105,7 @@ const GarrafaModel = db.define('garrafa', {
     primaryKey: true,
   },
   safra: {
-    type: Sequelize.INTEGER(25),
+    type: Sequelize.INTEGER(4),
     allowNull: false,
     validate: {
       min: 1900,               // limite inferior
@@ -130,11 +130,11 @@ const GarrafaModel = db.define('garrafa', {
     allowNull: true,
   },
   avaliacao: {
-    type: Sequelize.DECIMAL(3,1),
+    type: Sequelize.INTEGER(3),
     allowNull: true,
     validate: {
       min: 0,               // limite inferior
-      max: 10                // limite superior
+      max: 100                // limite superior
     }
   },
   id_vinho: {
