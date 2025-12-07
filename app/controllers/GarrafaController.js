@@ -85,7 +85,7 @@ class GarrafaController {
           .then((removido) => {
             if (removido) {
               return response.status(200).json({
-                message: `garrafa ${id_garrafa} do Vinho ${id_vinho} excluida com sucesso`,
+                message: `Garrafa ${id_garrafa} do Vinho ${id_vinho} excluida com sucesso.`,
               });
             } else {
               return response.status(404).json({

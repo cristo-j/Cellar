@@ -129,7 +129,7 @@ const GarrafaModel = db.define('garrafa', {
     type: Sequelize.DATEONLY,
     allowNull: true,
   },
-  avaliação: {
+  avaliacao: {
     type: Sequelize.DECIMAL(3,1),
     allowNull: true,
     validate: {
