@@ -15,7 +15,7 @@ class TokenValido {
     //se o cabecalho de autenticacao bearer nao foi fornecido:
     if (!cabecalhoAuth.startsWith('Bearer')) {
       return response.status(401).json({
-        message: 'mecanismo de autenticacao invalido, configure Bearer Token.',
+        message: 'Mecanismo de autenticacao invalido, configure Bearer Token.',
       });
     }
 
