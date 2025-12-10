@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('./conexao.js');
+const { GarrafaModel } = require('./Garrafa.js');
 
 class Vinho {
   #nome;
@@ -49,7 +50,15 @@ class Vinho {
 
   static async findByPk(id) {
     try {
-      const resultado = await VinhoModel.findByPk(id);
+      const resultado = await VinhoModel.findByPk(id, {
+      include: [
+        {
+          model: GarrafaModel,
+          as: 'garrafas'
+        }
+      ]
+    });
+
       if (resultado) {
         return resultado;
       } else {

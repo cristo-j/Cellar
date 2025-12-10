@@ -33,7 +33,8 @@ class VinhoController {
 
   find(request, response) {
     const id = request.params.id;
-    Vinho.findByPk(id)
+    const garrafaModel = models.garrafa.GarrafaModel;
+    Vinho.findByPk(id, {include: garrafaModel})
       .then((data) => {
         if (data) {
           return response.status(200).json(data);

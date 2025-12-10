@@ -20,7 +20,7 @@ const authMiddleware = require('../middlewares/TokenValido.js');
  * /vinho:
  *   get:
  *     summary: Lista todos os vinhos
- *     description: Retorna uma lista com todos os vinhos e seus garrafas.
+ *     description: Retorna uma lista com todos os vinhos e suas garrafas.
  *     tags: [vinho]
  *     security:
  *       - bearerAuth: []
@@ -45,7 +45,7 @@ router.get('/vinho', [authMiddleware.check], vinhoController.findAll);
  * /vinho/{id}:
  *   get:
  *     summary: Recupera um vinho pelo seu ID
- *     description: Busca e retorna os dados de um vinho específico.
+ *     description: Busca e retorna os dados de um vinho específico e suas garrafas.
  *     tags: [vinho]
  *     security:
  *       - bearerAuth: []
@@ -64,7 +64,7 @@ router.get('/vinho', [authMiddleware.check], vinhoController.findAll);
  *             schema:
  *               $ref: '#/components/schemas/vinho'
  *       '404':
- *         description: vinho não encontrado.
+ *         description: Vinho não encontrado.
  */
 
 router.get('/vinho/:id', [authMiddleware.check], vinhoController.find);
@@ -87,7 +87,7 @@ router.get('/vinho/:id', [authMiddleware.check], vinhoController.find);
  *             $ref: '#/components/schemas/Post_Edit_vinho'
  *     responses:
  *       '201':
- *         description: vinho criado com sucesso.
+ *         description: Vinho criado com sucesso.
  *       '400':
  *         description: Dados inválidos.
  */
@@ -216,7 +216,7 @@ router.get('/vinho/:id_vinho/garrafa', [authMiddleware.check], garrafaController
  *             schema:
  *               $ref: '#/components/schemas/garrafa'
  *       '404':
- *         description: garrafa não encontrado.
+ *         description: Nenhuma garrafa encontrada para este Vinho.
  */
 
 router.get('/vinho/:id_vinho/garrafa/:id_garrafa', [authMiddleware.check], garrafaController.find);
@@ -247,7 +247,7 @@ router.get('/vinho/:id_vinho/garrafa/:id_garrafa', [authMiddleware.check], garra
  *             $ref: '#/components/schemas/Post_Edit_garrafa'
  *     responses:
  *       '201':
- *         description: garrafa criado com sucesso.
+ *         description: Garrafa criada com sucesso.
  *       '400':
  *         description: Dados inválidos.
  */
@@ -286,7 +286,7 @@ router.post('/vinho/:id_vinho/garrafa', [authMiddleware.check], garrafaControlle
  *             $ref: '#/components/schemas/Post_Edit_vinho'
  *     responses:
  *       '201':
- *         description: garrafa atualizado com sucesso.
+ *         description: Garrafa atualizada com sucesso.
  *       '400':
  *         description: Dados inválidos.
  */
@@ -319,9 +319,9 @@ router.put('/vinho/:id_vinho/garrafa/:id_garrafa', [authMiddleware.check], garra
  *         description: O ID do garrafa.
  *     responses:
  *       '200':
- *         description: garrafa excluido com sucesso.
+ *         description: Garrafa excluida com sucesso.
  *       '404':
- *         description: garrafa não encontrado.
+ *         description: Garrafa não encontrada.
  */
 
 router.delete('/vinho/:id_vinho/garrafa/:id_garrafa', [authMiddleware.check], garrafaController.delete);

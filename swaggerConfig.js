@@ -4,9 +4,9 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Advocacia - Pack de Aprendizado',
+      title: 'Cellar - Controle de Adega Particular',
       version: '1.0.0',
-      description: 'Documentação da API RESTful para gestão de Advogados e Processos.',
+      description: 'Documentação da API RESTful para gestão de adega particular.',
     },
     servers: [
       {
@@ -26,49 +26,88 @@ const options = {
       },
       // Define os "objetos" que sua API usa
       schemas: {
-        advogado: {
+        vinho: {
           type: 'object',
+          required: ['nome', 'produtor'],
           properties: {
             id: { type: 'integer', description: 'ID do advogado', example: 1 },
-            nome: { type: 'string', description: 'Nome do advogado', example: 'João das Couves' },
-            oab: { type: 'string', description: 'Número da OAB', example: '12345 SC'},
-            especialidade: { type: 'string', description: 'Área de Especialidade', example: 'Trabalhista' },
+            nome: { type: 'string', minLength: 1, description: 'Nome do vinho', example: 'Pêra Manca' },
+            produtor: { type: 'string', minLength: 4, description: 'Produtor do vinho', example: 'Cartuxa' },
+            pais_origem: { type: 'string', description: 'País de origem do vinho', example: 'Portugal' },
+            tipo: { type: 'string', description: 'Tipo do vinho', example: 'Tinto' },
+            uva_casta: { type: 'string', description: 'Tipo(s) de uva(s)', example: 'Blend (Aragonez e Trincadeira)' },
           }
         },
-        Post_Edit_advogado: {
+        Post_Edit_vinho: {
           type: 'object',
-          required: ['nome', 'oab', 'especialidade'],
+          required: ['nome', 'produtor'],
           properties: {
-            nome: { type: 'string', description: 'Nome do advogado', example: 'João das Couves' },
-            oab: { type: 'string', description: 'Número da OAB', example: '12345 SC'},
-            especialidade: { type: 'string', description: 'Área de Especialidade', example: 'Trabalhista' },
+            id: { type: 'integer', description: 'ID do advogado', example: 1 },
+            nome: { type: 'string', minLength: 1, description: 'Nome do vinho', example: 'Pêra Manca' },
+            produtor: { type: 'string', minLength: 4, description: 'Produtor do vinho', example: 'Cartuxa' },
+            pais_origem: { type: 'string', description: 'País de origem do vinho', example: 'Portugal' },
+            tipo: { type: 'string', description: 'Tipo do vinho', example: 'Tinto' },
+            uva_casta: { type: 'string', description: 'Tipo(s) de uva(s)', example: 'Blend (Aragonez e Trincadeira' },
           }
         },
-        processo: {
-            type: 'object',
-            properties: {
-                id: { type: 'integer', description: 'ID do processo' },
-                id_advogado: { type: 'integer', description: 'ID do advogado responsável pelo processo' },
-                numero_processo: { type: 'string', description: 'Número do processo na Justiça', example: '9999999-99.2025.9.99.999' },
-                descricao: { type: 'string', description: 'Descrição do processo', example: 'Ação de indenização por danos morais' },
-                status: { type: 'string', description: 'Situação atual do processo', example: 'em andamento, arquivado, finalizado' },
-            }
+        garrafa: {
+          type: 'object',
+          required: ['safra', 'preco_compra', 'data_aquisicao'],
+          properties: {
+            id: { type: 'integer', description: 'ID do garrafa' },
+            id_advogado: { type: 'integer', description: 'ID do vinho' },
+            safra: {
+              type: 'integer',
+              minimum: 1900,
+              maximum: 2100, description: 'Safra da garrafa', example: '2021'
+            },
+            preco_compra: {
+              type: 'number',
+              multipleOf: 0.01,
+              minimum: 0,
+              maximum: 99999999.99, description: 'Preço da garrafa ', example: '5249,50'
+            },
+            data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '18/06/2022' },
+            consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'True' },
+            data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '08/12/2025' },
+            avaliacao: {
+              type: 'integer',
+              minimum: 0,
+              maximum: 100, description: 'Nota dada ao vinho daquela garrafa', example: '89'
+            },
+          }
         },
-        Post_Edit_processo: {
-            type: 'object',
-            required: ['numero_processo', 'descricao', 'status'],
-            properties: {
-                numero_processo: { type: 'string', description: 'Número do processo na Justiça', example: '9999999-99.2025.9.99.999' },
-                descricao: { type: 'text', description: 'Descrição do processo', example: 'Ação de indenização por danos morais' },
-                status: { type: 'string', description: 'Situação atual do processo', example: 'em andamento, arquivado, finalizado' },
-            }
+        Post_Edit_garrafa: {
+          type: 'object',
+          required: ['safra', 'preco_compra', 'data_aquisicao'],
+          properties: {
+            safra: {
+              type: 'integer',
+              minimum: 1900,
+              maximum: 2100, description: 'Safra da garrafa', example: '2021'
+            },
+            preco_compra: {
+              type: 'number',
+              multipleOf: 0.01,
+              minimum: 0,
+              maximum: 99999999.99, description: 'Preço da garrafa ', example: '5249,50'
+            },
+            data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '18/06/2022' },
+            consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'True' },
+            data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '08/12/2025' },
+            avaliacao: {
+              type: 'integer',
+              minimum: 0,
+              maximum: 100, description: 'Nota dada ao vinho daquela garrafa', example: '89'
+            },
+          },
         },
         usuario: {
           type: 'object',
           required: ['nome', 'email', 'senha'],
           properties: {
             nome: { type: 'string', description: 'Nome do usuário', example: 'João' },
-            email: { type: 'string', description: 'email do usuário', example: 'teste@gmail.com'},
+            email: { type: 'string', description: 'email do usuário', example: 'teste@gmail.com' },
             senha: { type: 'string', description: 'senha', example: 'minhasenha' },
           }
         },
@@ -76,7 +115,7 @@ const options = {
           type: 'object',
           required: ['email', 'senha'],
           properties: {
-            email: { type: 'string', description: 'email do usuário', example: 'teste@gmail.com'},
+            email: { type: 'string', description: 'email do usuário', example: 'teste@gmail.com' },
             senha: { type: 'string', description: 'senha', example: 'minhasenha' },
           }
         }

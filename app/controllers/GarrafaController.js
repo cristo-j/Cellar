@@ -41,7 +41,7 @@ class GarrafaController {
         return response.status(201).json(novoGarrafa);
       })
       .catch((erro) => {
-        return response.status(500).json({ message: 'erro no servidor: ' + erro.message });
+        return response.status(500).json({ message: 'Erro no servidor: ' + erro.message });
       });
   }
 
