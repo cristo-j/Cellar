@@ -10,7 +10,7 @@ const authMiddleware = require('../middlewares/TokenValido.js');
  *   - name: vinho
  *     description: Rotas para gerenciar vinhos
  *   - name: garrafa
- *     description: Rotas para gerenciar garrafas de um vinho
+ *     description: Rotas para gerenciar garrafas de vinhos
  */
 
 
