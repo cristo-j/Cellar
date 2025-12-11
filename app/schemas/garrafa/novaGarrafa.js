@@ -5,7 +5,6 @@ module.exports = {
       minimum: 1900, 
       maximum: 2100 },
     preco_compra: { type: 'number',
-      multipleOf: 0.01,
       minimum: 0,
       maximum: 99999999.99
       },

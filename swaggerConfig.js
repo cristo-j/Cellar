@@ -30,7 +30,7 @@ const options = {
           type: 'object',
           required: ['nome', 'produtor'],
           properties: {
-            id: { type: 'integer', description: 'ID do advogado', example: 1 },
+            id: { type: 'integer', description: 'ID do vinho', example: 1 },
             nome: { type: 'string', minLength: 1, description: 'Nome do vinho', example: 'Pêra Manca' },
             produtor: { type: 'string', minLength: 4, description: 'Produtor do vinho', example: 'Cartuxa' },
             pais_origem: { type: 'string', description: 'País de origem do vinho', example: 'Portugal' },
@@ -42,7 +42,7 @@ const options = {
           type: 'object',
           required: ['nome', 'produtor'],
           properties: {
-            id: { type: 'integer', description: 'ID do advogado', example: 1 },
+            id: { type: 'integer', description: 'ID do vinho', example: 1 },
             nome: { type: 'string', minLength: 1, description: 'Nome do vinho', example: 'Pêra Manca' },
             produtor: { type: 'string', minLength: 4, description: 'Produtor do vinho', example: 'Cartuxa' },
             pais_origem: { type: 'string', description: 'País de origem do vinho', example: 'Portugal' },
@@ -55,21 +55,20 @@ const options = {
           required: ['safra', 'preco_compra', 'data_aquisicao'],
           properties: {
             id: { type: 'integer', description: 'ID do garrafa' },
-            id_advogado: { type: 'integer', description: 'ID do vinho' },
+            id_vinho: { type: 'integer', description: 'ID do vinho' },
             safra: {
               type: 'integer',
               minimum: 1900,
-              maximum: 2100, description: 'Safra da garrafa', example: '2021'
+              maximum: 2100, description: 'Safra da garrafa', example: 2021
             },
             preco_compra: {
               type: 'number',
-              multipleOf: 0.01,
               minimum: 0,
-              maximum: 99999999.99, description: 'Preço da garrafa ', example: '5249,50'
+              maximum: 99999999.99, description: 'Preço da garrafa ', example: 5249.50
             },
-            data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '18/06/2022' },
+            data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '2022-06-18' },
             consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'True' },
-            data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '08/12/2025' },
+            data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '2024-06-18' },
             avaliacao: {
               type: 'integer',
               minimum: 0,
@@ -84,17 +83,16 @@ const options = {
             safra: {
               type: 'integer',
               minimum: 1900,
-              maximum: 2100, description: 'Safra da garrafa', example: '2021'
+              maximum: 2100, description: 'Safra da garrafa', example: 2021
             },
             preco_compra: {
               type: 'number',
-              multipleOf: 0.01,
               minimum: 0,
-              maximum: 99999999.99, description: 'Preço da garrafa ', example: '5249,50'
+              maximum: 99999999.99, description: 'Preço da garrafa ', example: 5249.50
             },
-            data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '18/06/2022' },
+            data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '2022-06-18' },
             consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'True' },
-            data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '08/12/2025' },
+            data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '2024-06-18' },
             avaliacao: {
               type: 'integer',
               minimum: 0,

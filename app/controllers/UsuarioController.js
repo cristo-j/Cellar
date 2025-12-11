@@ -49,7 +49,7 @@ class UsuarioController {
   login(request, response) {
     let validacoes = validacaoLogin(request.body);
     if (!validacoes) {
-      localize(validacao.errors);
+      localize(validacaoLogin.errors);
       let mensagem = validacaoLogin.errors[0].instancePath.replace('/', '');
       mensagem += ' ' + validacaoLogin.errors[0].message;
       return response.status(400).json({
