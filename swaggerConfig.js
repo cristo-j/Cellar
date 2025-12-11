@@ -67,7 +67,7 @@ const options = {
               maximum: 99999999.99, description: 'Preço da garrafa ', example: 5249.50
             },
             data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '2022-06-18' },
-            consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'True' },
+            consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'true' },
             data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '2024-06-18' },
             avaliacao: {
               type: 'integer',
@@ -91,7 +91,7 @@ const options = {
               maximum: 99999999.99, description: 'Preço da garrafa ', example: 5249.50
             },
             data_aquisicao: { type: 'string', format: 'date', description: 'Data de aquisição da garrafa', example: '2022-06-18' },
-            consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'True' },
+            consumida: { type: 'boolean', description: 'Indicação se a garrafa foi consumida ou não', example: 'true' },
             data_consumo: { type: 'string', format: 'date', description: 'Data de consumo da garrafa', example: '2024-06-18' },
             avaliacao: {
               type: 'integer',
