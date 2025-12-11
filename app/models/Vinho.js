@@ -153,7 +153,7 @@ const VinhoModel = db.define('vinho', {
     allowNull: true,
   },
     uva_casta: {
-    type: Sequelize.STRING(50),
+    type: Sequelize.STRING(30),
     allowNull: true,
   },
 });
