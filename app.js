@@ -28,7 +28,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.get('/', (request, response) => {
   response.json({
     //documento JSON
-    message: 'Advogado API',
+    message: 'Cellar API',
     version: '1.0',
   });
 });
