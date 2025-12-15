@@ -12,7 +12,9 @@ const app = express();
 app.use(express.json()); //parser dados de requisicoes em JSON
 app.use(
   cors({
-    origin: '*',
+  origin: "http://localhost:5173",   // origem permitida
+  credentials: true                  // permite cookies/autenticação
+
   })
 );
 
